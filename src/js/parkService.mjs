@@ -179,33 +179,52 @@ const park = {
   designation: "National Park"
 };
 
-export const parkInfoLinks = [
-  {
+const parkInfoLinks = [{
     name: "Current Conditions &#x203A;",
     link: "conditions.html",
-    image:
-      "https://www.nps.gov/common/uploads/grid_builder/yell/crop16_9/610D997A-D1EE-EE2E-B08F7C9E789EEDB3.jpg?width=423&quality=80&mode=crop&format=webp",
-    description:
-      "See what conditions to expect in the park before leaving on your trip!"
-  },
-  {
+    image: "https://www.nps.gov/common/uploads/grid_builder/yell/crop16_9/610D997A-D1EE-EE2E-B08F7C9E789EEDB3.jpg?width=423&quality=80&mode=crop&format=webp",
+    description: "See what conditions to expect in the park before leaving on your trip!"
+}, {
     name: "Fees and Passes &#x203A;",
     link: "fees.html",
-    image:
-      "https://www.nps.gov/common/uploads/grid_builder/yell/crop16_9/42892E15-AE6A-81EC-D35112D59E39F99C.jpg?width=423&quality=80&mode=crop&format=webp",
-    description:
-      "Learn about the fees and passes that are available."
-  },
-  {
+    image: "https://www.nps.gov/common/uploads/grid_builder/yell/crop16_9/42892E15-AE6A-81EC-D35112D59E39F99C.jpg?width=423&quality=80&mode=crop&format=webp",
+    description: "Learn about the fees and passes that are available."
+}, {
     name: "Visitor Centers &#x203A;",
     link: "visitor_centers.html",
-    image:
-      "https://www.nps.gov/common/uploads/grid_builder/yell/crop16_9/619AB9C3-DA87-B968-87C2256D544EBE26.jpg?width=423&quality=80&mode=crop&format=webp",
-    description:
-      "Learn about the visitor centers in the park."
-  }
-];
+    image: "https://www.nps.gov/common/uploads/grid_builder/yell/crop16_9/619AB9C3-DA87-B968-87C2256D544EBE26.jpg?width=423&quality=80&mode=crop&format=webp",
+    description: "Learn about the visitor centers in the park."
+}];
 
-export function getParkData() {
-  return park;
+const baseUrl = "https://developer.nps.gov/api/v1/";
+const apiKey = import.meta.env.VITE_NPS_API_KEY;
+
+async function getJson(url) {
+  const options = {
+    method: "GET",
+    headers: {
+      "X-Api-Key": apiKey
+    }
+  };
+  let data = {};
+  const response = await fetch(baseUrl + url, options);
+  if (response.ok) {
+    data = await response.json();
+  } else throw new Error("response not ok");
+  return data;
 }
+
+export function getInfoLinks(data) {
+  // Why index + 2 below? no real reason. we don't want index 0 since that is the one we used for the banner...I decided to skip an image.
+  const withUpdatedImages = parkInfoLinks.map((item, index) => {
+    item.image = data[index + 2].url;
+    return item;
+  });
+  return withUpdatedImages;
+}
+
+export async function getParkData() {
+  const parkData = await getJson("parks?parkCode=glac");
+  return parkData.data[0];
+}
+
