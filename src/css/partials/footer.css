@@ -1,0 +1,23 @@
+#park-footer {
+    background-image: url("https://byui-cse.github.io/wdd231-course/images/topo_pattern.png");
+    padding: 2em;
+}
+
+.contact h3,
+.contact h4 {
+    margin-bottom: .5em;
+}
+
+.contact p {
+    margin: .25em 0;
+}
+
+.contact h4 {
+    margin-top: 1em;
+}
+
+@media (max-width: 600px) {
+    .contact {
+        margin-left: 0;
+    }
+}
