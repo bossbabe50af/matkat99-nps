@@ -4,6 +4,4 @@ const baseUrl = "https://developer.nps.gov/api/v1/";
 async function getJson(endpoint) {
 
 }
-
-const apiKey = "5KMfPH15bWNbVnUJOq6IzoxuAGhqfJd2MLcL9Wx2npm"
-
+const apiKey = import.meta.env.VITE_NPS_API_KEY;
