@@ -1,3 +1,5 @@
+import spritePath from "../images/sprite.symbol.svg";
+
 export function parkInfoTemplate(info) {
   return `<a href="/" class="hero-banner__title">${info.name}</a>
     <p class="hero-banner__subtitle">
@@ -36,4 +38,29 @@ export function footerTemplate(info) {
     <p>${voice}</p>
   </section>
     `;
+}
+
+export function alertTemplate(alert) {
+  const alertType =
+    alert.category === "Park Closure"
+      ? "closure"
+      : alert.category.toLowerCase();
+
+  return `<li class="alert">
+    <svg class="icon" focusable="false" aria-hidden="true">
+      <use href="${spritePath}#alert-${alertType}"></use>
+    </svg>
+    <div>
+      <h3 class="alert-${alertType}">${alert.title}</h3>
+      <p>${alert.description}</p>
+    </div>
+  </li>`;
+}
+
+export function visitorCenterTemplate(center) {
+  return `<li>
+    <h3>${center.name}</h3>
+    <p>${center.description}</p>
+    <p>${center.directionsInfo}</p>
+  </li>`;
 }

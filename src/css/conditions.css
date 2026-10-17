@@ -1,0 +1,116 @@
+/* Current Conditions page */
+.conditions {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem 2rem;
+}
+
+.conditions h1 {
+  font-family: var(--bs-font-serif);
+  font-weight: normal;
+}
+
+.conditions h2 {
+  margin-top: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.conditions p {
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* Alerts */
+.alerts > ul {
+  list-style: none;
+  padding: 0;
+}
+
+.alert {
+  display: flex;
+  gap: 1rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem 0 1rem;
+  border-bottom: 1px solid var(--bs-grey-3);
+}
+
+.alert svg {
+  width: 30px;
+  height: 30px;
+  margin: 0.25rem;
+  flex: 0 0 auto;
+  background: transparent;
+}
+
+.alert > div {
+  min-width: 0;
+}
+
+.alert h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.2rem;
+}
+
+.alert p {
+  margin: 0;
+}
+
+/* Visitor Services and Activities accordions */
+.visitor details,
+.activities details {
+  border: 1px solid var(--bs-grey-3);
+}
+
+.visitor summary,
+.activities summary {
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.visitor summary:focus-visible,
+.activities summary:focus-visible {
+  outline: 3px solid var(--alert-information);
+  outline-offset: 2px;
+}
+
+.visitor details > ul,
+.activities details > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 1rem 1rem;
+}
+
+/* Visitor center entries */
+.visitor details > ul > li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--bs-grey-3);
+}
+
+.visitor details > ul > li:last-child {
+  border-bottom: none;
+}
+
+.visitor h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.visitor p {
+  margin: 0.5rem 0;
+}
+
+/* Activity entries */
+.activities details > ul > li {
+  padding: 0.35rem 0;
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+  .conditions {
+    padding: 1rem;
+  }
+
+  .alert {
+    gap: 0.5rem;
+  }
+}
