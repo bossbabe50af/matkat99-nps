@@ -15,7 +15,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@eslint/css": "^2.0.1",
     "vite": "^6.2.3"
   },
   "devDependencies": {
