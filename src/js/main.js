@@ -30,19 +30,3 @@ async function init() {
 
 init();
 
-function enableNavigation() {
-  const menuButton = document.querySelector("#global-nav-toggle");
-  const navigation = document.querySelector(".global-nav");
-
-  menuButton.addEventListener("click", () => {
-    const isOpen = navigation.classList.toggle("show");
-
-    menuButton.setAttribute("aria-expanded", String(isOpen));
-    menuButton.setAttribute(
-      "aria-label",
-      isOpen ? "Close Menu" : "Open Menu"
-    );
-  });
-}
-
-enableNavigation();
